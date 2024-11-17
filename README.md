@@ -13,15 +13,16 @@ It can be setup to scroll the text and/or icon. And to any text color all from H
 - Go to the homeassistant/esphome folder
 - Create two new folder. "_fonts" and "_icons"
 - Copy the files from the folder of the same name in this repository to the corresponding folders in the Home Assistant.
-### if not already present:
+### If not already present:
 - Create the secrets file
     - Go to the ESPHome Add-on
     - On the top right click on secrets
-- add at least this four lines. To get an random API Key visit [esphome doku](https://esphome.io/components/api.html#configuration-variables) 
+- add at least this four lines. 
     - `wifi_ssid: "MY_WIFI_NAME_WHERE_THE_ESP_SHOULD_CONNECT"`
     - `wifi_password: "THE_PASSWORD_FOR_THAT_WIFI"`
     - `ota_password: "RANDOM_32_CHARS_KEY" # like this 6dcd21a1985bb15beba465dad5b32394`
     - `api_key: "RANDOM_CREATED_KEY"`
+        - To get an random API Key visit [esphome doku](https://esphome.io/components/api.html#configuration-variables) 
 
 
 ## Preparing the Hardware
@@ -38,7 +39,7 @@ It can be setup to scroll the text and/or icon. And to any text color all from H
     - Remove the shown code
     - Enter the code from the espcode.c file (open with and text editor)
         - make sure you keep the format and tabstops in the file.
-    - Change the devicename in line 2, to what ever the device should be called.
+    - Change the device name in line 2, to what ever the device should be called.
     - Check the Wifi section.
     - Save the Code.
 
