@@ -3,10 +3,10 @@ This is a basically stupid display which is getting all information from Home As
 It can show pre configured icon and print any text send to it.
 It can be setup to scroll the text and/or icon. And to any text color all from Home Assistant.
 ## Prerequisites:
-    - Home Assistant
-    - ESPhome Add-on installed
-    - [ESP32](https://amzn.eu/d/iIpKc6O)
-    - 32x8 [LED-Matrix](https://amzn.eu/d/cav3gaP)
+- Home Assistant
+- ESPhome Add-on installed
+- [ESP32](https://amzn.eu/d/iIpKc6O)
+- 32x8 [LED-Matrix](https://amzn.eu/d/cav3gaP)
 
 ## For the beginning:
 - In Home Assistant open the File editor.
