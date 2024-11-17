@@ -1,0 +1,98 @@
+alias: Display // 1 // Info
+description: ""
+triggers:
+  - trigger: time_pattern
+    minutes: /5
+    seconds: "1"
+mode: single
+conditions:
+  - condition: state
+    entity_id: input_boolean.helper_display_prio_matrixclock
+    state: "off"
+actions:
+  - metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.helper_display_info_matrixclock
+    action: input_boolean.turn_on
+  - if:
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: sensor.picnic_last_order_status
+            state: COMPLETED
+    then:
+      - data:
+          rgb_color:
+            - 255
+            - 255
+            - 255
+        target:
+          entity_id:
+            - light.matrixclock_scrolling_sign
+        action: light.turn_on
+      - data:
+          value: >
+            {%if states('sensor.picnic_next_delivery_eta_start') == 'unknown' %}
+            Kommt     am {{
+            as_timestamp(strptime(states('sensor.picnic_last_order_slot_start'),    
+            '%Y-%m-%dT%H:%M:%S%z' ))| timestamp_custom('%d.%m ab %H:%M') }} {%
+            else     %}zwischen {{    
+            as_timestamp(strptime(states('sensor.picnic_next_delivery_eta_start'),    
+            '%Y-%m-%dT%H:%M:%S%z' ))| timestamp_custom('%H:%M') }} und {{    
+            as_timestamp(strptime(states('sensor.picnic_next_delivery_eta_end'),    
+            '%Y-%m-%dT%H:%M:%S%z' ))| timestamp_custom('%H:%M') }} {% endif
+            %}Uhr
+        target:
+          entity_id: text.helper_displaytext_matrixclock
+        action: text.set_value
+      - data:
+          value: picnic
+        target:
+          entity_id: text.helper_icon_matrixclock
+        action: text.set_value
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 30
+          milliseconds: 0
+    else: []
+  - data:
+      value: |
+        {% set weathertrans = {
+          'clear-night': 'klar',
+          'cloudy': 'bewoelkt',
+          'exceptional': '',
+          'fog': 'nebelig',
+          'hail': 'hagel',
+          'lightning': 'gewitter',
+          'lightning-rainy': 'gewitter und regen',
+          'partlycloudy': 'teilweise bewoelkt',
+          'pouring': 'stroemender regen',
+          'rainy': 'regnerisch',
+          'snowy': 'schnee',
+          'snowy-rainy': 'schneeregen',
+          'sunny': 'sonnig',
+          'windy': 'windig',
+          'windy-variant': 'stuermisch'
+          } 
+          %}
+         {{ weathertrans.get(states('weather.forecast_home'), 'unk') }} - {{ states('sensor.temp_hum_balkony_temperature')}} °C
+    target:
+      entity_id: text.helper_displaytext_matrixclock
+    action: text.set_value
+  - data:
+      value: "{{ states('weather.forecast_home')| string }}"
+    target:
+      entity_id: text.helper_icon_matrixclock
+    action: text.set_value
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - target:
+      entity_id:
+        - input_boolean.helper_display_info_matrixclock
+    data: {}
+    action: input_boolean.turn_off
