@@ -22,7 +22,7 @@ It can be setup to scroll the text and/or icon. And to any text color all from H
     - `wifi_password: "THE_PASSWORD_FOR_THAT_WIFI"`
     - `ota_password: "RANDOM_32_CHARS_KEY" # like this 6dcd21a1985bb15beba465dad5b32394`
     - `api_key: "RANDOM_CREATED_KEY"`
-        - To get an random API Key visit [esphome doku](https://esphome.io/components/api.html#configuration-variables) 
+        - To get an random API Key visit [esphome docu](https://esphome.io/components/api.html#configuration-variables) 
 
 
 ## Preparing the Hardware
