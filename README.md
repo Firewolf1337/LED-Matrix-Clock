@@ -62,7 +62,8 @@ It can be setup to scroll the text and/or icon. And to any text color all from H
     - This will update the time every minute.
     - This requires an time entity    
 2. To get some more advanced information. Create a second Automation and copy the example_inforamtion_automation.yaml into it.
-    - for this you need a input boolean helper entity called "input_boolean.helper_display_info_matrixclock"
-    - for this to work you need to change the Automation from the first step to the code of example_advanced_time.yaml
-    - this will show information like weather and grocery delivery from PicNic.
+    - For this you need a input boolean helper entity called "input_boolean.helper_display_info_matrixclock"
+    - For this to work you need to change the Automation from the first step to the code of example_advanced_time.yaml
+    - This will show information like weather and grocery delivery from PicNic.
+        - For the weather information there is a translation. This should be changed to your preferred language 😉
     - This will reoccurs every 5 minutes
